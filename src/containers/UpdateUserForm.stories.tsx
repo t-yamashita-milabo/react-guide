@@ -24,7 +24,7 @@ Default.parameters = {
             username: "alice",
             active: true,
             type: "Admin",
-            permissions: ["read", "write", "execution"],
+            permissions: ["read", "write"],
           })
         );
       }),
@@ -57,7 +57,7 @@ Default.play = async ({ canvasElement }) => {
 
   // Fetch してきた値が入っていることを確認
   await expect(getUsernameInput()).toHaveValue("alice");
-  await expect(getPasswordInput()).toHaveValue("password");
+  await expect(getPasswordInput()).toHaveValue("");
   await expect(getActiveTrueRadio()).toBeChecked();
   await waitFor(() =>
     expect(
