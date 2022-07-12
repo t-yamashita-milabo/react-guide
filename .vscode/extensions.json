@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.git-extension-pack",
+    "mhutchie.git-graph",
+    "orta.vscode-jest",
+    "esbenp.prettier-vscode"
+  ]
+}
