@@ -46,6 +46,7 @@ const SelectFormYup = () => {
     defaultValues: {
       color: "blue",
     },
+    resolver: yupResolver(schema),
   });
 
   return (

@@ -3,17 +3,17 @@ import { PropsWithChildren } from "react";
 
 import TableRow, { Datum } from "./TableRow";
 
-export type ClickableTableProps<T> = {
+export type TableContainerProps<T> = {
   header: string[];
   cols: (keyof Datum<T>)[];
   data: Datum<T>[];
 };
 
-const ClickableTable = <T,>({
+const TableContainer = <T,>({
   header,
   cols,
   data,
-}: PropsWithChildren<ClickableTableProps<T>>) => (
+}: PropsWithChildren<TableContainerProps<T>>) => (
   <Table>
     <Thead>
       <Tr>
@@ -30,4 +30,4 @@ const ClickableTable = <T,>({
   </Table>
 );
 
-export default ClickableTable;
+export default TableContainer;

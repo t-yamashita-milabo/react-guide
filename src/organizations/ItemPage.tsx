@@ -8,7 +8,7 @@ import {
   ModalBody,
   useDisclosure,
 } from "@chakra-ui/react";
-import ClickableTable from "./ClickableTable";
+import ClickableTable from "organizations/ClickableTable";
 import { Item } from "models/item";
 import { useState } from "react";
 
