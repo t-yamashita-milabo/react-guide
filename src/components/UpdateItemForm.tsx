@@ -77,7 +77,7 @@ const UpdateItemForm = () => {
           })}
         />
         <FormErrorMessage>
-          {formState.errors.itemName && formState.errors.itemName.message}
+          {formState.errors.itemName?.message}
         </FormErrorMessage>
       </FormControl>
 
@@ -90,9 +90,7 @@ const UpdateItemForm = () => {
             valueAsNumber: true,
           })}
         />
-        <FormErrorMessage>
-          {formState.errors.price && formState.errors.price.message}
-        </FormErrorMessage>
+        <FormErrorMessage>{formState.errors.price?.message}</FormErrorMessage>
       </FormControl>
 
       <Button type="submit">保存</Button>

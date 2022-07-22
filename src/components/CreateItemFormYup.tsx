@@ -7,8 +7,9 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-
 import { Item } from "models/item";
+import yup from "utils/yup.ja";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const createItem = async (params: {
   itemName: string;
@@ -18,12 +19,14 @@ export const createItem = async (params: {
   return { ...params, id: 0 };
 };
 
-export type CreateItemFormInput = {
-  itemName: string;
-  price: number;
-};
+const schema = yup.object({
+  itemName: yup.string().required().label("アイテム名"),
+  price: yup.number().required().label("価格"),
+});
 
-const CreateItemForm = () => {
+export type CreateItemFormInput = yup.InferType<typeof schema>;
+
+const CreateItemFormYup = () => {
   const toast = useToast();
 
   const { register, formState, handleSubmit } = useForm<CreateItemFormInput>({
@@ -87,4 +90,4 @@ const CreateItemForm = () => {
   );
 };
 
-export default CreateItemForm;
+export default CreateItemFormYup;

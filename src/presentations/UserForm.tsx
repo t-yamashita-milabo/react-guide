@@ -62,7 +62,7 @@ const UserForm: FC<Props> = ({
           })}
         />
         <FormErrorMessage>
-          {formState.errors.username && formState.errors.username.message}
+          {formState.errors.username?.message}
         </FormErrorMessage>
       </FormControl>
 
@@ -75,7 +75,7 @@ const UserForm: FC<Props> = ({
           })}
         />
         <FormErrorMessage>
-          {formState.errors.password && formState.errors.password.message}
+          {formState.errors.password?.message}
         </FormErrorMessage>
       </FormControl>
 
@@ -96,9 +96,7 @@ const UserForm: FC<Props> = ({
             </RadioGroup>
           )}
         />
-        <FormErrorMessage>
-          {formState.errors.active && formState.errors.active.message}
-        </FormErrorMessage>
+        <FormErrorMessage>{formState.errors.active?.message}</FormErrorMessage>
       </FormControl>
 
       <FormControl isInvalid={!!formState.errors.type}>

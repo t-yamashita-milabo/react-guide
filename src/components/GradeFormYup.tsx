@@ -7,6 +7,8 @@ import {
   FormLabel,
   useToast,
 } from "@chakra-ui/react";
+import yup from "utils/yup.ja";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const schoolTypes = ["小学校", "中学校"] as const;
 const grades = [1, 2, 3, 4, 5, 6] as const;
@@ -14,16 +16,29 @@ const grades = [1, 2, 3, 4, 5, 6] as const;
 type SchoolType = typeof schoolTypes[number];
 type Grade = typeof grades[number];
 
+const schema = yup.object({
+  schoolType: yup
+    .string()
+    .oneOf([...schoolTypes])
+    .required()
+    .label("学校種別"),
+  grade: yup
+    .number()
+    .oneOf([...grades])
+    .required()
+    .label("学年"),
+});
+
 export type FormInput = {
   schoolType: SchoolType;
   grade: Grade;
 };
 
-const GradeForm = () => {
+const GradeFormYup = () => {
   const toast = useToast();
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
-    console.log(data);
+    console.log({ data });
     toast({
       title: "Success!",
       status: "success",
@@ -40,6 +55,7 @@ const GradeForm = () => {
 
   const { register, control, formState, handleSubmit } = useForm<FormInput>({
     defaultValues,
+    resolver: yupResolver(schema),
   });
 
   const selectedSchoolType = useWatch<FormInput, "schoolType">({
@@ -81,4 +97,4 @@ const GradeForm = () => {
   );
 };
 
-export default GradeForm;
+export default GradeFormYup;

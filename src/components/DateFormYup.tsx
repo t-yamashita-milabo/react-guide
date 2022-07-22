@@ -8,13 +8,24 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
+import yup from "utils/yup.ja";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-export type FormInput = {
-  startDate: string;
-};
+const schema = yup.object({
+  startDate: yup.string().required(),
+});
 
-const DateForm = () => {
+export type FormInput = yup.InferType<typeof schema>;
+
+const DateFormYup = () => {
   const toast = useToast();
+
+  const { register, formState, handleSubmit } = useForm<FormInput>({
+    defaultValues: {
+      startDate: format(new Date(), "yyyy-MM-dd"), // <input type="date"> のvalue の有効なフォーマットが yyyy-MM-dd なのでそれに合わせて変換する．ここのフォーマットと Input で実際に表示されるフォーマットは違うことに注意
+    },
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
     console.log({ data });
@@ -26,12 +37,6 @@ const DateForm = () => {
       position: "top",
     });
   };
-
-  const { register, formState, handleSubmit } = useForm<FormInput>({
-    defaultValues: {
-      startDate: format(new Date(), "yyyy-MM-dd"), // <input type="date"> のvalue の有効なフォーマットが yyyy-MM-dd なのでそれに合わせて変換する．ここのフォーマットと Input で実際に表示されるフォーマットは違うことに注意
-    },
-  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -47,4 +52,4 @@ const DateForm = () => {
   );
 };
 
-export default DateForm;
+export default DateFormYup;

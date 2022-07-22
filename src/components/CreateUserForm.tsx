@@ -49,7 +49,7 @@ const CreateUserForm = () => {
           })}
         />
         <FormErrorMessage>
-          {formState.errors.username && formState.errors.username.message}
+          {formState.errors.username?.message}
         </FormErrorMessage>
       </FormControl>
 
@@ -62,7 +62,7 @@ const CreateUserForm = () => {
           })}
         />
         <FormErrorMessage>
-          {formState.errors.password && formState.errors.password.message}
+          {formState.errors.password?.message}
         </FormErrorMessage>
       </FormControl>
 

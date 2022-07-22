@@ -29,7 +29,3 @@ Default.play = async ({ canvasElement }) => {
     await canvas.findByText(/アイテム名を入力してください/)
   ).toBeInTheDocument();
 };
-
-Default.parameters = {
-  jest: "ItemForm.test.tsx",
-};

@@ -7,6 +7,8 @@ import {
   FormLabel,
   useToast,
 } from "@chakra-ui/react";
+import yup from "utils/yup.ja";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const colors = ["blue", "red", "green"] as const;
 
@@ -16,7 +18,17 @@ export type FormInput = {
   color: Color;
 };
 
-const SelectForm = () => {
+const schema = yup.object({
+  color: yup
+    .string()
+    .required()
+    // Argument of type 'readonly ["blue", "red", "green"]' is not assignable to parameter of type '(Reference<unknown> | Maybe<string | undefined>)[]'.
+    //   The type 'readonly ["blue", "red", "green"]' is 'readonly' and cannot be assigned to the mutable type '(Reference<unknown> | Maybe<string | undefined>)[]'.ts(2345)
+    // color: yup.string().required().oneOf(colors),
+    .oneOf([...colors]),
+});
+
+const SelectFormYup = () => {
   const toast = useToast();
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
@@ -54,4 +66,4 @@ const SelectForm = () => {
   );
 };
 
-export default SelectForm;
+export default SelectFormYup;

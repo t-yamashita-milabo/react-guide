@@ -8,13 +8,24 @@ import {
   Radio,
   useToast,
 } from "@chakra-ui/react";
+import yup from "utils/yup.ja";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-export type FormInput = {
-  active: boolean;
-};
+const schema = yup.object({
+  active: yup.boolean().required().label("アクティブ"),
+});
 
-const RadioForm = () => {
+export type FormInput = yup.InferType<typeof schema>;
+
+const RadioFormYup = () => {
   const toast = useToast();
+
+  const { control, formState, handleSubmit } = useForm<FormInput>({
+    defaultValues: {
+      active: true,
+    },
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
     console.log({ data });
@@ -26,12 +37,6 @@ const RadioForm = () => {
       position: "top",
     });
   };
-
-  const { control, formState, handleSubmit } = useForm<FormInput>({
-    defaultValues: {
-      active: true,
-    },
-  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,4 +64,4 @@ const RadioForm = () => {
   );
 };
 
-export default RadioForm;
+export default RadioFormYup;
