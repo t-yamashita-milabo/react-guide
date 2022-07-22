@@ -14,8 +14,8 @@ import { Item } from "models/item";
 export const fetchItem = async (): Promise<Item> => {
   // fetch item via API
   return {
-    id: 0,
-    itemName: "item0",
+    id: "item0",
+    itemName: "アイテム0",
     price: 100,
   };
 };

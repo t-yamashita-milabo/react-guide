@@ -8,7 +8,7 @@ export const createItem = async (params: {
   price: number;
 }): Promise<Item> => {
   // create user via API
-  return { ...params, id: 0 };
+  return { ...params, id: "item0" };
 };
 
 const CreateItemForm = () => {

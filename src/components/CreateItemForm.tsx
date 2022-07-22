@@ -15,7 +15,7 @@ export const createItem = async (params: {
   price: number;
 }): Promise<Item> => {
   // create item via API
-  return { ...params, id: 0 };
+  return { ...params, id: "item0" };
 };
 
 export type CreateItemFormInput = {

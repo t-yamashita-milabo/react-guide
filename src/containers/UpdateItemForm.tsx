@@ -6,8 +6,8 @@ import { Item } from "models/item";
 import ItemForm, { ItemFormInput } from "presentations/ItemForm";
 
 export const fetchItem = async (): Promise<Item> => ({
-  id: 0,
-  itemName: "item0",
+  id: "item0",
+  itemName: "アイテム0",
   price: 100,
 });
 
