@@ -58,7 +58,7 @@ const ItemPage = () => {
           <ModalContent>
             <ModalCloseButton />
             <ModalBody>
-              <Box pt={4} pb={4}>{`${clickedItem.itemName} is licked`}</Box>
+              <Box pt={4} pb={4}>{`${clickedItem.itemName} is clicked`}</Box>
             </ModalBody>
           </ModalContent>
         </Modal>
