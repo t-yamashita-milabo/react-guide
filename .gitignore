@@ -220,3 +220,6 @@ sketch
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,nextjs,react
+/test-results/
+/playwright-report/
+/playwright/.cache/

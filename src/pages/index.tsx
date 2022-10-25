@@ -1,13 +1,12 @@
-import Clock from "components/Clock";
-import EnhancedUserTable from "containers/UserTable";
 import type { NextPage } from "next";
+
+import UserTable from "components/UserTable";
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>WEEEEEEEEEEEEEEEEEEEEEEEEEEEE</h1>
-      <Clock />
-      <EnhancedUserTable />
+      <h1>Users</h1>
+      <UserTable />
     </div>
   );
 };

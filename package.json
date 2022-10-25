@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test:e2e": "playwright test --project chromium",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test-storybook": "test-storybook",
@@ -29,10 +30,11 @@
     "react-hook-form": "^7.33.1",
     "swr": "^1.3.0",
     "yup": "^0.32.11",
-    "zod": "link:@hooks/resolver/zod"
+    "zod": "^3.17.10"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
+    "@playwright/test": "^1.24.2",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-interactions": "^6.5.9",

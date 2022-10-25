@@ -20,3 +20,13 @@ export const isArrayOf = <T>(
 };
 
 export const fmtDate = (date: Date, fmt = "yyyy/MM/dd") => format(date, fmt);
+
+export const range = (start: number, end: number, step: number) => {
+  if (step === 0) {
+    throw new RangeError(`invalid argument: step=${step}; step must not be 0.`);
+  }
+  const len = Math.ceil((end - start) / step);
+  return len <= 0 ? [] : Array.from(new Array(len), (v, i) => start + i * step);
+};
+
+export const eRange = (end: number) => range(0, end, 1);
